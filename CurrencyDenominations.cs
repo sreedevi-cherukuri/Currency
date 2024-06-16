@@ -54,7 +54,7 @@ namespace Currency
     public class Pound : ICurrency
     {
         int[] notes = new int[] { 100, 50, 20, 10, 5, 2, 1 };
-        int[] coins = new int[] { 50 };
+        int[] coins = new int[] { 50, 20, 10, 5, 2, 1 };
 
         string noteType = "£";
         string coinType = "p";
@@ -85,8 +85,8 @@ namespace Currency
         double amount;
         private int[] currencyNotes;
         private int[] currencyCoins;
-        int[] noteDenominations;
-        int[] coinsDenominations;
+        public int[] noteDenominations;
+        public int[] coinsDenominations;
         CurrencyType currencyType;
         ICurrency currency;
 
@@ -124,7 +124,7 @@ namespace Currency
 
         public int[] GetDenominations(int[] supportedDenominations, double input_amount)
         {
-            int amount = (int)input_amount;
+            int amount = (int)Math.Round(input_amount);
 
             int[] counter = new int[supportedDenominations.Length];
 
